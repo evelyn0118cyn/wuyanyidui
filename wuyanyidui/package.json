@@ -1,0 +1,16 @@
+{
+  "name": "fraud-111",
+  "version": "1.0.0",
+  "private": true,
+  "description": "财务舞弊111 —— 舞弊审计调查岗位 AI 助理（网页应用 + 本地 API 代理，零第三方依赖）",
+  "main": "server/server.js",
+  "engines": { "node": ">=18.0.0" },
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node tests/selftest.js",
+    "smoke": "node tests/smoke.js"
+  },
+  "keywords": ["财务舞弊", "舞弊审计", "审计辅助", "内控合规", "AI助理"],
+  "license": "UNLICENSED",
+  "dependencies": {}
+}
