@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财务舞弊111 · 舞弊审计调查 AI 助理</title>
+<meta name="description" content="舞弊审计调查岗位 AI 助理：辅助识别舞弊风险信号、梳理可疑交易线索、评估舞弊可能性、生成舞弊调查分析报告（不替代调查结论）。">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div id="app">
+  <div style="padding:40px;color:#6B6780;font-size:14px">正在加载「财务舞弊111」…</div>
+</div>
+<noscript>
+  <div style="padding:40px;font-family:sans-serif;color:#1F1B2E">
+    本应用需要启用 JavaScript 才能运行。请在浏览器中允许 JavaScript 后刷新页面。
+  </div>
+</noscript>
+
+<!-- ===================== 核心（纯函数，可 Node 单测） ===================== -->
+<script src="assets/js/core/config.js"></script>
+<script src="assets/js/core/util.js"></script>
+<script src="assets/js/core/stats.js"></script>
+<script src="assets/js/core/memory.js"></script>
+<script src="assets/js/core/kb-embedded.js"></script>
+<script src="assets/js/core/rag.js"></script>
+<script src="assets/js/core/demo-data.js"></script>
+<script src="assets/js/core/datasource.js"></script>
+
+<!-- ===================== 分析引擎 ===================== -->
+<script src="assets/js/analysis/risk-alert.js"></script>
+<script src="assets/js/analysis/clue-sort.js"></script>
+<script src="assets/js/analysis/linkage.js"></script>
+<script src="assets/js/analysis/aggregation.js"></script>
+<script src="assets/js/analysis/scorecard.js"></script>
+<script src="assets/js/analysis/report.js"></script>
+
+<!-- ===================== 大模型能力 ===================== -->
+<script src="assets/js/core/llm.js"></script>
+
+<!-- ===================== UI 与应用外壳 ===================== -->
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/app.js"></script>
+
+<!-- ===================== 页面 ===================== -->
+<script src="assets/js/pages/workbench.js"></script>
+<script src="assets/js/pages/risk.js"></script>
+<script src="assets/js/pages/clue.js"></script>
+<script src="assets/js/pages/linkage.js"></script>
+<script src="assets/js/pages/aggregate.js"></script>
+<script src="assets/js/pages/score.js"></script>
+<script src="assets/js/pages/report.js"></script>
+<script src="assets/js/pages/examples.js"></script>
+<script src="assets/js/pages/settings.js"></script>
+
+<script>
+/* 可选：SheetJS（用于 .xlsx 解析）。通过 CDN 加载；离线时自动降级为仅支持 CSV。 */
+(function () {
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+  s.onerror = function () { console.warn('[财务舞弊111] SheetJS 未加载，Excel 上传不可用，可改用 CSV。'); };
+  s.async = true;
+  document.head.appendChild(s);
+})();
+
+/* 启动 */
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    App.boot();
+  } catch (e) {
+    console.error(e);
+    document.getElementById('app').innerHTML =
+      '<div style="padding:40px;font-family:sans-serif">' +
+      '<h2 style="color:#D93025">启动失败</h2>' +
+      '<pre style="background:#FEF7F6;padding:16px;border-radius:8px;white-space:pre-wrap">' + (e.stack || e.message) + '</pre>' +
+      '<p style="color:#6B6780">请按 F12 打开控制台查看详细错误，或重新双击 start.bat 启动。</p></div>';
+  }
+});
+</script>
+</body>
+</html>
